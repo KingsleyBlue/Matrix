@@ -1,0 +1,3 @@
+D:/Docs/Code/C++/Matrix/build/CMakeFiles/main.dir
+D:/Docs/Code/C++/Matrix/build/CMakeFiles/edit_cache.dir
+D:/Docs/Code/C++/Matrix/build/CMakeFiles/rebuild_cache.dir
