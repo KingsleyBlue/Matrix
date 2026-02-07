@@ -123,12 +123,7 @@
 		{
 			"isCMake" : true,
 			"isExternal" : true,
-			"path" : "D:/Apps/CMake/share/cmake-4.2/Modules/Linker/GNU-C.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "D:/Apps/CMake/share/cmake-4.2/Modules/Linker/GNU.cmake"
+			"path" : "D:/Apps/CMake/share/cmake-4.2/Modules/Platform/Linker/Windows-C.cmake"
 		},
 		{
 			"isCMake" : true,
@@ -198,12 +193,7 @@
 		{
 			"isCMake" : true,
 			"isExternal" : true,
-			"path" : "D:/Apps/CMake/share/cmake-4.2/Modules/Linker/GNU-CXX.cmake"
-		},
-		{
-			"isCMake" : true,
-			"isExternal" : true,
-			"path" : "D:/Apps/CMake/share/cmake-4.2/Modules/Linker/GNU.cmake"
+			"path" : "D:/Apps/CMake/share/cmake-4.2/Modules/Platform/Linker/Windows-CXX.cmake"
 		},
 		{
 			"isCMake" : true,

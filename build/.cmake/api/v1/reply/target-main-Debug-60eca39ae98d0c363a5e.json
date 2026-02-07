@@ -13,8 +13,7 @@
 	{
 		"commands" : 
 		[
-			"add_executable",
-			"target_compile_features"
+			"add_executable"
 		],
 		"files" : 
 		[
@@ -30,12 +29,6 @@
 				"file" : 0,
 				"line" : 8,
 				"parent" : 0
-			},
-			{
-				"command" : 1,
-				"file" : 0,
-				"line" : 10,
-				"parent" : 0
 			}
 		]
 	},
@@ -50,18 +43,10 @@
 			"compileCommandFragments" : 
 			[
 				{
-					"fragment" : "-g -std=gnu++17"
+					"fragment" : "-g"
 				}
 			],
 			"language" : "CXX",
-			"languageStandard" : 
-			{
-				"backtraces" : 
-				[
-					2
-				],
-				"standard" : "17"
-			},
 			"sourceIndexes" : 
 			[
 				0,

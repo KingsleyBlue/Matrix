@@ -10,13 +10,13 @@
 				{
 					"includeDirectories" : 
 					[
-						"D:/Apps/Mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include",
-						"D:/Apps/Mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed",
+						"D:/Apps/Mingw64/lib/gcc/x86_64-w64-mingw32/13.2.0/include",
+						"D:/Apps/Mingw64/lib/gcc/x86_64-w64-mingw32/13.2.0/include-fixed",
 						"D:/Apps/Mingw64/x86_64-w64-mingw32/include"
 					],
 					"linkDirectories" : 
 					[
-						"D:/Apps/Mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0",
+						"D:/Apps/Mingw64/lib/gcc/x86_64-w64-mingw32/13.2.0",
 						"D:/Apps/Mingw64/lib/gcc",
 						"D:/Apps/Mingw64/x86_64-w64-mingw32/lib",
 						"D:/Apps/Mingw64/lib"
@@ -28,7 +28,7 @@
 						"gcc",
 						"moldname",
 						"mingwex",
-						"pthread",
+						"kernel32",
 						"advapi32",
 						"shell32",
 						"user32",
@@ -37,11 +37,12 @@
 						"mingw32",
 						"gcc",
 						"moldname",
-						"mingwex"
+						"mingwex",
+						"kernel32"
 					]
 				},
 				"path" : "D:/Apps/Mingw64/bin/gcc.exe",
-				"version" : "8.1.0"
+				"version" : "13.2.0"
 			},
 			"language" : "C",
 			"sourceFileExtensions" : 
@@ -58,16 +59,16 @@
 				{
 					"includeDirectories" : 
 					[
-						"D:/Apps/Mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++",
-						"D:/Apps/Mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/x86_64-w64-mingw32",
-						"D:/Apps/Mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include/c++/backward",
-						"D:/Apps/Mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include",
-						"D:/Apps/Mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0/include-fixed",
+						"D:/Apps/Mingw64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++",
+						"D:/Apps/Mingw64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/x86_64-w64-mingw32",
+						"D:/Apps/Mingw64/lib/gcc/x86_64-w64-mingw32/13.2.0/include/c++/backward",
+						"D:/Apps/Mingw64/lib/gcc/x86_64-w64-mingw32/13.2.0/include",
+						"D:/Apps/Mingw64/lib/gcc/x86_64-w64-mingw32/13.2.0/include-fixed",
 						"D:/Apps/Mingw64/x86_64-w64-mingw32/include"
 					],
 					"linkDirectories" : 
 					[
-						"D:/Apps/Mingw64/lib/gcc/x86_64-w64-mingw32/8.1.0",
+						"D:/Apps/Mingw64/lib/gcc/x86_64-w64-mingw32/13.2.0",
 						"D:/Apps/Mingw64/lib/gcc",
 						"D:/Apps/Mingw64/x86_64-w64-mingw32/lib",
 						"D:/Apps/Mingw64/lib"
@@ -81,7 +82,7 @@
 						"gcc",
 						"moldname",
 						"mingwex",
-						"pthread",
+						"kernel32",
 						"advapi32",
 						"shell32",
 						"user32",
@@ -91,11 +92,12 @@
 						"gcc_s",
 						"gcc",
 						"moldname",
-						"mingwex"
+						"mingwex",
+						"kernel32"
 					]
 				},
 				"path" : "D:/Apps/Mingw64/bin/g++.exe",
-				"version" : "8.1.0"
+				"version" : "13.2.0"
 			},
 			"language" : "CXX",
 			"sourceFileExtensions" : 
