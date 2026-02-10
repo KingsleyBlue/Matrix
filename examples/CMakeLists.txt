@@ -1,0 +1,4 @@
+add_subdirectory(Decomponent)
+add_subdirectory(Generation)
+add_subdirectory(Operation)
+add_subdirectory(Solve_Equation)

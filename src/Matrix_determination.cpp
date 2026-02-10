@@ -1,5 +1,5 @@
 #include<vector>
-#include"Matrix_core.hpp"
+#include<Matrix/Matrix_core.hpp>
 
 double mat::det(const Matrix& m)
     {

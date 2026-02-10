@@ -1,0 +1,3 @@
+add_executable(matrix_operation operation.cpp)
+
+target_link_libraries(matrix_operation PRIVATE Matrix)

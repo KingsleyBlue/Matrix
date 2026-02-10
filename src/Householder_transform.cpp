@@ -1,4 +1,4 @@
-#include"Matrix_core.hpp"
+#include<Matrix/Matrix_core.hpp>
 #include<cmath>
 Matrix mat::HT(const Matrix& A,const int& index)
 {

@@ -1,0 +1,3 @@
+add_executable(matrix_decomponent decomponent.cpp)
+
+target_link_libraries(matrix_decomponent PRIVATE Matrix)

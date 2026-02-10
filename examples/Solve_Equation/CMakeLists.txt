@@ -1,0 +1,3 @@
+add_executable(matrix_solution solution.cpp)
+
+target_link_libraries(matrix_solution PRIVATE Matrix)

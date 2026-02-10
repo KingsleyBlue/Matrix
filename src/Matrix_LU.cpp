@@ -1,4 +1,4 @@
-#include"Matrix_core.hpp"
+#include<Matrix/Matrix_core.hpp>
 
 std::pair<Matrix, Matrix> mat::LUdecomp(const Matrix& A)
 {

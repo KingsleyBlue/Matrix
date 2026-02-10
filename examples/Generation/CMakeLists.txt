@@ -1,0 +1,3 @@
+add_executable(matrix_generation generation.cpp)
+
+target_link_libraries(matrix_generation PRIVATE Matrix)

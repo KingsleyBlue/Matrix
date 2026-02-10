@@ -1,4 +1,4 @@
-#include"Matrix_core.hpp"
+#include<Matrix/Matrix_core.hpp>
 #include<tuple>
 std::vector<Matrix> mat::solution(const Matrix& A,const Matrix& B)
 {

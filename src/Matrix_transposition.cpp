@@ -1,4 +1,4 @@
-#include"Matrix_core.hpp"
+#include<Matrix/Matrix_core.hpp>
 Matrix mat::trans(const Matrix& A)
     {
         int rows=A.getcol(),cols=A.getrow();

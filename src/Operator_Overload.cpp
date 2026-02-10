@@ -1,4 +1,4 @@
-#include"Matrix_core.hpp"
+#include<Matrix/Matrix_core.hpp>
 
 std::istream &operator>>(std::istream &is, Matrix &m)
 {

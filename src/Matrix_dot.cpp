@@ -1,4 +1,4 @@
-#include"Matrix_core.hpp"
+#include<Matrix/Matrix_core.hpp>
 
 long double mat::dot(const Matrix& A,const Matrix& B)
 {
