@@ -14,12 +14,13 @@ std::pair<Matrix, Matrix> mat::QRdecomp(const Matrix& A)
         Matrix Q(rows);
         for(int i=0;i<std::min(rows,cols);i++)
         {
-            Q=Q*mat::HT(R,i);
-            R=mat::HT(R,i)*R;
-            //std::cout<<Q<<std::endl<<R<<std::endl;
+            Matrix H=mat::HT(R,i);
+            R=H*R;
+            Q=Q*H;
         }
-        //std::cout<<Q<<std::endl<<R<<std::endl;
         return std::make_pair(Q,R);
+
+//Gram-Scmidit Method
         // long double modulus;
         // Matrix Q(rows,cols);
         // Q=mat::orthx(A);

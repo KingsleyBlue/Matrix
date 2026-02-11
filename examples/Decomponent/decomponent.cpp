@@ -24,7 +24,7 @@ int main()
     //QR Decompose
     auto qr=mat::QRdecomp(A);
     std::cout<<"Q is:"<<std::endl<<std::get<0>(qr)<<std::endl;
-    std::cout<<"R is:"<<std::endl<<std::get<0>(qr)<<std::endl;
+    std::cout<<"R is:"<<std::endl<<std::get<1>(qr)<<std::endl;
 
     system("pause");
     return 0;

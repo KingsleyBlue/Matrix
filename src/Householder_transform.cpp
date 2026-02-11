@@ -13,25 +13,18 @@ Matrix mat::HT(const Matrix& A,const int& index)
         x.set(i-index,0,A.getvalue(i,index));
     }
 
-    
-        //x=A.getcol(j);
-    for(int i=0;i<rows-index;i++)
-    {
-        modulus+=x.getvalue(i,0)*x.getvalue(i,0);
-    }
-    modulus=sqrt(modulus);
+    modulus=sqrt(mat::dot(x,x));
     if((x.getvalue(0,0)/modulus)>0.5)
     {
         x.set(0,0,x.getvalue(0,0)+modulus);
-        temp_H=temp_H-2*x*mat::trans(x)/mat::dot(x,x);
     }
         //Q.set(j,j,-modulus);
     else
     {
         x.set(0,0,x.getvalue(0,0)-modulus);
-        temp_H=temp_H-2*x*mat::trans(x)/mat::dot(x,x);
     }
-        //Q.set(j,j,modulus);
+    temp_H=temp_H-2*x*mat::trans(x)/mat::dot(x,x);
+
     if(index==0)
     return temp_H;
     else
