@@ -37,5 +37,6 @@ int main()
     //get matrix
     std::vector<std::vector<long double>> t(A.getmat());
 
+    system("pause");
     return 0;
 }

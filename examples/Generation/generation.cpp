@@ -16,5 +16,6 @@ int main()
     Matrix B(m,n);
     std::cin>>B;
 
+    system("pause");
     return 0;
 }

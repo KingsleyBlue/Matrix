@@ -26,5 +26,6 @@ int main()
     std::cout<<"Q is:"<<std::endl<<std::get<0>(qr)<<std::endl;
     std::cout<<"R is:"<<std::endl<<std::get<0>(qr)<<std::endl;
 
+    system("pause");
     return 0;
 }
