@@ -121,7 +121,7 @@ namespace mat
         }
     }
 
-    Matrix& operator=(Matrix&& other)//移动运算符重载
+    Matrix& operator=(Matrix&& other) noexcept//移动运算符重载
     {
         if(this==&other)
         {
