@@ -7,7 +7,7 @@ Matrix mat::HT(const Matrix& A,const int& index)
     long double modulus=0;
     Matrix H(rows);
     Matrix temp_H(rows-index);
-    Matrix x(rows-index,1);
+    Vector x(rows-index);
     for(int i=index;i<rows;i++)
     {
         x.set(i-index,0,A.getvalue(i,index));

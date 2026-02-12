@@ -1,13 +1,13 @@
 #include<Matrix/Matrix_core.hpp>
 
-long double mat::dot(const Matrix& A,const Matrix& B)
+long double mat::dot(const Vector& A,const Vector& B)
 {
-    if(A.getcol()==1&&B.getcol()==1&&A.getrow()==B.getrow())
+    if(A.size()==B.size())
     {
         long double result=0;
-        for(int i=0;i<A.getrow();i++)
+        for(int i=0;i<A.size();i++)
         {
-            result+=A.getvalue(i,0)*B.getvalue(i,0);
+            result+=A(i,0)*B(i,0);
         }
         return result;
     }

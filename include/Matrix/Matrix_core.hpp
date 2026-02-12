@@ -4,6 +4,8 @@
 #include<cmath>
 
 class Matrix;
+class Vector;
+
 namespace mat
 {
     Matrix trans(const Matrix&);//求转置矩阵
@@ -15,7 +17,7 @@ namespace mat
     Matrix row_aug(const Matrix&,const Matrix&);//行增广矩阵
     std::pair<Matrix, Matrix> QRdecomp(const Matrix&);//QR分解
     std::vector<Matrix> solution(const Matrix&,const Matrix&);
-    long double dot(const Matrix&,const Matrix&);
+    long double dot(const Vector&,const Vector&);
     Matrix orthx(Matrix);
     Matrix reverse(const Matrix&);
     Matrix HT(const Matrix&,const int&);
@@ -47,7 +49,21 @@ namespace mat
     Matrix(const Matrix& m):rows(m.rows),cols(m.cols),matrix(m.matrix){}
     int getrow() const{return rows;}//返回行数
     int getcol() const{return cols;}//返回列数
-    long double getvalue(int row,int col) const
+    long double& operator()(int r, int c)//写
+    {
+        if(r>=rows||c>=cols)
+            throw std::invalid_argument("out of range!");
+        else
+            return matrix[r][c];
+    }
+    const long double& operator()(int r, int c) const   //读
+    {
+        if(r>=rows||c>=cols)
+            throw std::invalid_argument("out of range!");
+        else
+            return matrix[r][c];
+    }
+    virtual long double getvalue(int row,int col) const
     {
         if(row>=rows||col>=cols)
             throw std::invalid_argument("out of range!");
@@ -55,7 +71,7 @@ namespace mat
         return matrix[row][col];
     }
     std::vector<std::vector<long double>> getmat() const{return matrix;}
-    void set(int row,int col,long double value){matrix[row][col]=value;}
+    virtual void set(int row,int col,long double value){matrix[row][col]=value;}
     Matrix getrow(int row) const//返回某行
     {
         if(row>=rows)
@@ -123,16 +139,54 @@ namespace mat
         {
             rows=other.rows;
             cols=other.cols;
-            matrix = other.matrix;
+            matrix = std::move(other.matrix);
             other.rows=0;
             other.cols=0;
-            std::vector<std::vector<long double>>().swap(other.matrix);
             return *this;
         }
     }
 
  };
 
+ class Vector:public Matrix
+ {
+    public:
+    Vector():Matrix(){};
+    Vector(int r):Matrix(r,1){}
+    long double& operator[](int r)
+    {
+        return (*this)(r,0);
+    }
+    long double operator[](int r) const
+    {
+        return (*this)(r,0);
+    }
+    int size() const
+    {
+        return getrow();
+    }
+    Vector(const Vector&)=default;
+    Vector(Vector&&)=default;
+    Vector& operator=(const Vector& other)
+    {
+        Matrix::operator=(other);
+        return *this;
+    }
+    Vector& operator=(Vector&& other)//移动运算符重载
+    {
+        Matrix::operator=(std::move(other));
+        return *this;
+    }
+    Vector(const Matrix& m) : Matrix(m)//转换构造函数
+    {
+        if (m.getcol() != 1)
+            throw std::invalid_argument("Not a column vector");
+    }
+    private:
+    using Matrix::getcol;
+    using Matrix::getrow;
+    using Matrix::getmat;
+ };
 
 //重载运算符
 std::istream &operator>>(std::istream &, Matrix &);

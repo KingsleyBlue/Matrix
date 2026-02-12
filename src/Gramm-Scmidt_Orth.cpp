@@ -6,11 +6,11 @@ Matrix mat::orthx(Matrix A)
     int cols=A.getcol();
     if(rows>=cols)
     {
-        std::vector<Matrix>orth;
+        std::vector<Vector>orth;
         orth.reserve(cols);
         for(int j=0;j<cols;j++)
         {
-            orth.push_back(Matrix(rows,1));
+            orth.push_back(Vector(rows));
             orth[j]=A.getcol(j);
         }
         for(int j=1;j<cols;j++)

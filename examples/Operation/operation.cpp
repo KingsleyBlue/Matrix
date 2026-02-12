@@ -30,10 +30,11 @@ int main()
 
     //set value
     A.set(0,1,3);
+    A(0,1)=3;
 
     //get value
-    A.getvalue(0,1);
-
+    std::cout<<A.getvalue(0,1)<<std::endl;
+    std::cout<<A(0,1)<<std::endl;
     //get matrix
     std::vector<std::vector<long double>> t(A.getmat());
 

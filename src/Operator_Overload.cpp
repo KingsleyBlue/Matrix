@@ -1,4 +1,5 @@
 #include<Matrix/Matrix_core.hpp>
+#include<cmath>
 
 std::istream &operator>>(std::istream &is, Matrix &m)
 {
@@ -18,7 +19,10 @@ std::ostream & operator<<(std::ostream &os, const Matrix &m)
         {
             for(int j=0;j<m.getcol();j++)
             {
-                os<<m.getvalue(i,j)<<' ';
+                if(abs(m.getvalue(i,j))<1e-5)
+                    os<<0<<' ';
+                else
+                    os<<m.getvalue(i,j)<<' ';
             }
             os<<std::endl;
         }
