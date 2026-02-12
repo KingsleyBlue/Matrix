@@ -35,6 +35,7 @@ namespace mat
     std::vector<std::vector<long double>>matrix;
     
     public:
+    //构造函数
     Matrix():rows(0),cols(0){}
     Matrix(int r,int c):rows(r), cols(c), matrix(r, std::vector<long double>(c, 0)){}
 
@@ -46,24 +47,18 @@ namespace mat
         }
     }
 
-    Matrix(const Matrix& m):rows(m.rows),cols(m.cols),matrix(m.matrix){}
+    Matrix(const Matrix& m):rows(m.rows),cols(m.cols),matrix(m.matrix){}//拷贝构造函数
+    Matrix(Matrix&& m):rows(m.rows),cols(m.cols),matrix(std::move(m.matrix))//移动构造函数
+    {
+        m.rows=0;
+        m.cols=0;
+    }
+
+    //父类成员函数
     int getrow() const{return rows;}//返回行数
     int getcol() const{return cols;}//返回列数
-    long double& operator()(int r, int c)//写
-    {
-        if(r>=rows||c>=cols)
-            throw std::invalid_argument("out of range!");
-        else
-            return matrix[r][c];
-    }
-    const long double& operator()(int r, int c) const   //读
-    {
-        if(r>=rows||c>=cols)
-            throw std::invalid_argument("out of range!");
-        else
-            return matrix[r][c];
-    }
-    virtual long double getvalue(int row,int col) const
+   
+    long double getvalue(int row,int col) const
     {
         if(row>=rows||col>=cols)
             throw std::invalid_argument("out of range!");
@@ -71,7 +66,7 @@ namespace mat
         return matrix[row][col];
     }
     std::vector<std::vector<long double>> getmat() const{return matrix;}
-    virtual void set(int row,int col,long double value){matrix[row][col]=value;}
+    void set(int row,int col,long double value){matrix[row][col]=value;}
     Matrix getrow(int row) const//返回某行
     {
         if(row>=rows)
@@ -101,6 +96,7 @@ namespace mat
         }
     }
     
+    //父类运算符重载
     Matrix& operator=(const Matrix& other)//拷贝运算符重载
     {
         // 检查自赋值
@@ -146,13 +142,34 @@ namespace mat
         }
     }
 
+    long double& operator()(int r, int c)//写
+    {
+        if(r>=rows||c>=cols)
+            throw std::invalid_argument("out of range!");
+        else
+            return matrix[r][c];
+    }
+
+    const long double& operator()(int r, int c) const   //读
+    {
+        if(r>=rows||c>=cols)
+            throw std::invalid_argument("out of range!");
+        else
+            return matrix[r][c];
+    }
+
  };
 
  class Vector:public Matrix
  {
     public:
+    //构造函数
     Vector():Matrix(){};
     Vector(int r):Matrix(r,1){}
+    Vector(const Vector&)=default;
+    Vector(Vector&&)=default;
+
+    //子类运算符重载
     long double& operator[](int r)
     {
         return (*this)(r,0);
@@ -165,8 +182,7 @@ namespace mat
     {
         return getrow();
     }
-    Vector(const Vector&)=default;
-    Vector(Vector&&)=default;
+    
     Vector& operator=(const Vector& other)
     {
         Matrix::operator=(other);
@@ -182,6 +198,7 @@ namespace mat
         if (m.getcol() != 1)
             throw std::invalid_argument("Not a column vector");
     }
+
     private:
     using Matrix::getcol;
     using Matrix::getrow;
