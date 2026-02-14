@@ -16,7 +16,7 @@ int mat::rank(Matrix A)
         ifzero=true;
         for(int j=0;j<cols;j++)
         {
-            if(B.getvalue(i,j)!=0)
+            if(B(i,j)!=0)
             {
                 ifzero=false;
                 break;

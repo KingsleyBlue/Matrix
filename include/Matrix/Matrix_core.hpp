@@ -58,15 +58,7 @@ namespace mat
     int getrow() const{return rows;}//返回行数
     int getcol() const{return cols;}//返回列数
    
-    long double getvalue(int row,int col) const
-    {
-        if(row>=rows||col>=cols)
-            throw std::invalid_argument("out of range!");
-        else
-        return matrix[row][col];
-    }
     std::vector<std::vector<long double>> getmat() const{return matrix;}
-    void set(int row,int col,long double value){matrix[row][col]=value;}
     Matrix getrow(int row) const//返回某行
     {
         if(row>=rows)
@@ -76,7 +68,8 @@ namespace mat
             Matrix b(1,cols);
             for(int j=0;j<cols;j++)
             {
-                b.set(0,j,matrix[row][j]);
+                //b.set(0,j,matrix[row][j]);
+                b(0,j)=matrix[row][j];
             }
             return b;
         }
@@ -90,7 +83,8 @@ namespace mat
             Matrix b(rows,1);
             for(int i=0;i<rows;i++)
             {
-                b.set(i,0,matrix[i][col]);
+                //b.set(i,0,matrix[i][col]);
+                b(i,0)=matrix[i][col];
             }
             return b;
         }
@@ -127,12 +121,9 @@ namespace mat
         {
             return *this;
         }
-        else if(rows != other.rows || cols != other.cols)
-        {
-            throw std::invalid_argument("=():size not match!");
-        }
         else
         {
+            matrix.clear();
             rows=other.rows;
             cols=other.cols;
             matrix = std::move(other.matrix);

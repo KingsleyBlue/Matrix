@@ -12,32 +12,32 @@ std::pair<Matrix, Matrix> mat::LUdecomp(const Matrix& A)
         {
             for(int i=0;i<rows;i++)
             {
-                if(abs(A.getvalue(i,i))<1e-5)
+                if(abs(A(i,i))<1e-5)
                 {
                     throw std::string("pivot is near zero!");
                 }
                 
-                L.set(i,0,A.getvalue(i,0));
+                L(i,0)=A(i,0);
                 if(j>0)
                 {
-                    U.set(0,j,A.getvalue(0,j)/L.getvalue(0,0));
+                    U(0,j)=A(0,j)/L(0,0);
                     if(j<=i)
                     {
-                        sum=A.getvalue(i,j);
+                        sum=A(i,j);
                         for(int k=0;k<=j-1;k++)
                         {
-                            sum-=L.getvalue(i,k)*U.getvalue(k,j);
+                            sum-=L(i,k)*U(k,j);
                         }
-                        L.set(i,j,sum);
+                        L(i,j)=sum;
                     }
                     else if(i>0&&j>i)
                     {
-                        sum=A.getvalue(i,j);
+                        sum=A(i,j);
                         for(int k=0;k<=i-1;k++)
                         {
-                            sum-=L.getvalue(i,k)*U.getvalue(k,j);
+                            sum-=L(i,k)*U(k,j);
                         }
-                        U.set(i,j,sum/L.getvalue(i,i));
+                        U(i,j)=sum/L(i,i);
                     }
                 
                 }

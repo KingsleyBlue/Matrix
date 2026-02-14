@@ -9,10 +9,10 @@ int main()
     {
         for(int j=0;j<3;j++)
         {
-            A.set(i,j,value++);
+            A(i,j)=value++;
         }
     }
-    A.set(2,2,10);
+    A(2,2)=10;
 
     //LU Decompose
     auto lu=mat::LUdecomp(A);

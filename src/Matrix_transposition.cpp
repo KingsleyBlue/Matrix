@@ -7,7 +7,7 @@ Matrix mat::trans(const Matrix& A)
         {
             for(int j=0;j<cols;j++)
             {
-                AT.set(i,j,A.getvalue(j,i));
+                AT(i,j)=A(j,i);
             }
         }
         return AT;

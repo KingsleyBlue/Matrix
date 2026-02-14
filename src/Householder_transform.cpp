@@ -10,18 +10,17 @@ Matrix mat::HT(const Matrix& A,const int& index)
     Vector x(rows-index);
     for(int i=index;i<rows;i++)
     {
-        x.set(i-index,0,A.getvalue(i,index));
+        x[i-index]=A(i,index);
     }
 
     modulus=sqrt(mat::dot(x,x));
-    if((x.getvalue(0,0)/modulus)>0.5)
+    if(x[0]>=0)
     {
-        x.set(0,0,x.getvalue(0,0)+modulus);
+        x[0]=x[0]+modulus;
     }
-        //Q.set(j,j,-modulus);
     else
     {
-        x.set(0,0,x.getvalue(0,0)-modulus);
+        x[0]=x[0]-modulus;
     }
     temp_H=temp_H-2*x*mat::trans(x)/mat::dot(x,x);
 
@@ -32,7 +31,7 @@ Matrix mat::HT(const Matrix& A,const int& index)
         for(int i=index;i<rows;i++)
         {
             for(int j=index;j<cols;j++)
-            H.set(i,j,temp_H.getvalue(i-index,j-index));
+                H(i,j)=temp_H(i-index,j-index);
         }
     }
     return H;

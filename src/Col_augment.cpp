@@ -13,8 +13,8 @@ Matrix mat::col_aug(const Matrix& A,const Matrix& B)
         {
             for(int j=0;j<cols;j++)
             {
-                t=(j<A.getcol())? A.getvalue(i,j):B.getvalue(i,j-A.getcol());
-                C.set(i,j,t);
+                t=(j<A.getcol())? A(i,j):B(i,j-B.getcol());
+                C(i,j)=t;
             }
         }
         return C;

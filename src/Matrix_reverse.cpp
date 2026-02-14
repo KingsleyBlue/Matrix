@@ -16,7 +16,7 @@ Matrix mat::reverse(const Matrix& A)
         {
             for(int i=0;i<rows;i++)
             {
-                A_re.set(i,j,result[j].getvalue(i,0));
+                A_re(i,j)=result[j](i,0);
             }
         }
         return A_re;

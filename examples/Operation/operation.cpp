@@ -29,11 +29,9 @@ int main()
     std::cout<<mat::reverse(B)<<std::endl<<std::endl;
 
     //set value
-    A.set(0,1,3);
     A(0,1)=3;
 
     //get value
-    std::cout<<A.getvalue(0,1)<<std::endl;
     std::cout<<A(0,1)<<std::endl;
     //get matrix
     std::vector<std::vector<long double>> t(A.getmat());

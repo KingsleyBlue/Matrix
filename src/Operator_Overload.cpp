@@ -19,10 +19,10 @@ std::ostream & operator<<(std::ostream &os, const Matrix &m)
         {
             for(int j=0;j<m.getcol();j++)
             {
-                if(abs(m.getvalue(i,j))<1e-5)
+                if(abs(m(i,j))<1e-5)
                     os<<0<<' ';
                 else
-                    os<<m.getvalue(i,j)<<' ';
+                    os<<m(i,j)<<' ';
             }
             os<<std::endl;
         }
@@ -38,7 +38,7 @@ Matrix operator+(const Matrix& A, const Matrix& B)
          {
              for (int j = 0; j < C.getcol(); j++)
              {
-                 C.set(i,j,A.getvalue(i,j) + B.getvalue(i,j));
+                C(i,j)=A(i,j)+B(i,j);
              }
          }
          return C;
@@ -58,7 +58,7 @@ Matrix operator-(const Matrix& A,const Matrix& B)
             {
                 for(int j=0;j<C.getcol();j++)
                 {
-                    C.set(i,j,A.getvalue(i,j)-B.getvalue(i,j));
+                    C(i,j)=A(i,j)-B(i,j);
                 }
             }
             return C;
@@ -77,7 +77,7 @@ Matrix operator*(const long double& a,const Matrix& B)//矩阵数乘
             {
                 for(int j=0;j<C.getcol();j++)
                 {
-                    C.set(i,j,a*B.getvalue(i,j));
+                    C(i,j)=a*B(i,j);
                 }
             }
             return C;
@@ -90,7 +90,7 @@ Matrix operator*(const Matrix& A,const long double& b)//矩阵数乘
             {
                 for(int j=0;j<C.getcol();j++)
                 {
-                    C.set(i,j,b*A.getvalue(i,j));
+                    C(i,j)=b*A(i,j);
                 }
             }
             return C;
@@ -106,19 +106,13 @@ Matrix operator/(const Matrix& A,const long double& b)//矩阵数除
             {
                 for(int j=0;j<C.getcol();j++)
                 {
-                    C.set(i,j,A.getvalue(i,j)/b);
+                    C(i,j)=A(i,j)/b;
                 }
             }
             return C;
         }
     }
 
-long double operator/(const Matrix& A,const Matrix& B)
-{
-    if(A.getcol()>1||A.getrow()>1||B.getcol()>1||B.getrow()>1)
-    throw std::invalid_argument("not a number!");
-    return A.getvalue(0,0)/B.getvalue(0,0);
-}
 
 Matrix operator*(const Matrix& A,const Matrix& B)//矩阵乘法
     {
@@ -131,7 +125,7 @@ Matrix operator*(const Matrix& A,const Matrix& B)//矩阵乘法
                 {
                     for(int k=0;k<A.getcol();k++)
                     {
-                        C.set(i,j,C.getvalue(i,j)+A.getvalue(i,k)*B.getvalue(k,j));
+                        C(i,j)=C(i,j)+A(i,k)*B(k,j);
                     }
                 }
             }
@@ -153,7 +147,7 @@ bool operator==(const Matrix& A,const Matrix& B)//判断矩阵是否相等
         {
             for(int j=0;j<B.getcol();j++)
             {
-                switch(A.getvalue(i,j)==B.getvalue(i,j))
+                switch(A(i,j)==B(i,j))
                 {
                     case 0:
                         return false;

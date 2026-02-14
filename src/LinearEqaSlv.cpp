@@ -20,27 +20,28 @@ std::vector<Matrix> mat::solution(const Matrix& A,const Matrix& B)
             for(int i=0;i<L.getrow();i++)
             {
                 
-                    temp_y[0]=B.getcol(g).getvalue(0,0)/L.getvalue(0,0);
+                    temp_y[0]=B.getcol(g)(0,0)/L(0,0);
                     if(i>0)
                     {
-                        sum=B.getcol(g).getvalue(i,0);
+                        sum=B.getcol(g)(i,0);
                         for(int j=0;j<i;j++)
                         {
-                            sum-=L.getvalue(i,j)*temp_y[j];
+                            sum-=L(i,j)*temp_y[j];
                         }
-                        temp_y[i]=sum/L.getvalue(i,i);
+                        temp_y[i]=sum/L(i,i);
                     }
                 
             }
             for(int i=U.getrow()-1;i>=0;i--)
             {
-                result[g].set(U.getrow()-1,0,temp_y[rows-1]);
+                result[g](U.getrow()-1,0)=temp_y[rows-1];
                 if(i<U.getrow()-1)
                 {
-                    result[g].set(i,0,temp_y[i]);
+                    //result[g].set(i,0,temp_y[i]);
+                    result[g](i,0)=temp_y[i];
                     for(int j=U.getcol()-1;j>i;j--)
                     {
-                        result[g].set(i,0,result[g].getvalue(i,0)-U.getvalue(i,j)*result[g].getvalue(j,0));
+                        result[g](i,0)=result[g](i,0)-U(i,j)*result[g](j,0);
                     }
                 }
             }
@@ -65,15 +66,15 @@ std::vector<Matrix> mat::solution(const Matrix& A,const Matrix& B)
                 result.push_back(Matrix(rows,1));
                 for(int i=R.getrow()-1;i>=0;i--)
                 {
-                    result[g].set(R.getrow()-1,0,Y.getvalue(rows-1,g)/R.getvalue(rows-1,rows-1));
+                    result[g](R.getrow()-1,0)=Y(rows-1,g)/R(rows-1,rows-1);
                     if(i<R.getrow()-1)
                     {
-                        result[g].set(i,0,Y.getvalue(i,g));
+                        result[g](i,0)=Y(i,g);
                         for(int j=R.getcol()-1;j>i;j--)
                         {
-                            result[g].set(i,0,result[g].getvalue(i,0)-R.getvalue(i,j)*result[g].getvalue(j,0));
+                            result[g](i,0)=result[g](i,0)-R(i,j)*result[g](j,0);
                         }
-                        result[g].set(i,0,(result[g].getvalue(i,0))/R.getvalue(i,i));
+                        result[g](i,0)=(result[g](i,0))/R(i,i);
                     }
                 }
             }

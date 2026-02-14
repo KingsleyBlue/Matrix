@@ -14,8 +14,8 @@ Matrix mat::row_aug(const Matrix& A,const Matrix& B)
         {
             for(int i=0;i<rows;i++)
             {
-                t=(i<A.getrow())? A.getvalue(i,j):B.getvalue(i-A.getrow(),j);
-                C.set(i,j,t);
+                t=(i<A.getrow())? A(i,j):B(i-A.getrow(),j);
+                C(i,j)=t;
             }
         }
         return C;

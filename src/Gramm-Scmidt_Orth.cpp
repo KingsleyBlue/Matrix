@@ -17,7 +17,6 @@ Matrix mat::orthx(Matrix A)
         {
             for(int i=j;i<cols;i++)
             {
-                //orth[j]=orth[j]-((mat::trans(orth[i])*orth[j])/(mat::trans(orth[i])*orth[i]))*orth[i];
                 orth[i]=orth[i]-mat::dot(orth[i],orth[j-1])*orth[j-1];
             }
             
@@ -27,7 +26,7 @@ Matrix mat::orthx(Matrix A)
         {
             for(int i=0;i<rows;i++)
             {
-                A.set(i,j,orth[j].getvalue(i,0));
+                A(i,j)=orth[j](i,0);
             }
         }
         return A;
@@ -52,7 +51,7 @@ Matrix mat::orthx(Matrix A)
         {
             for(int j=0;j<cols;j++)
             {
-                A.set(i,j,orth[i].getvalue(0,j));
+                A(i,j)=orth[i](0,j);
             }
         }
         return A;
