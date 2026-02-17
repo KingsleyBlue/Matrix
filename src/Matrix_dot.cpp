@@ -7,7 +7,7 @@ long double mat::dot(const Vector& A,const Vector& B)
         long double result=0;
         for(int i=0;i<A.size();i++)
         {
-            result+=A(i,0)*B(i,0);
+            result+=A[i]*B[i];
         }
         return result;
     }

@@ -21,6 +21,7 @@ namespace mat
     Matrix orthx(Matrix);
     Matrix reverse(const Matrix&);
     Matrix HT(const Matrix&,const int&);
+    long double tr(const Matrix&);
 }
 
 //定义矩阵
