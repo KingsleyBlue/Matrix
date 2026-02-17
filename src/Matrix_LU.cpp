@@ -7,7 +7,7 @@ std::pair<Matrix, Matrix> mat::LUdecomp(const Matrix& A)
         long double sum;
         int rows=A.getrow(),cols=A.getcol();
         Matrix L(rows,cols);
-        Matrix U(rows);
+        Identity U(rows);
         for(int j=0;j<cols;j++)
         {
             for(int i=0;i<rows;i++)

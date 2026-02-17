@@ -7,7 +7,7 @@ int main()
     std::cout<<A<<std::endl<<std::endl;
 
     //Generate a 3x3 identity matrix
-    Matrix I(3);
+    Identity I(3);
     std::cout<<I<<std::endl<<std::endl;
 
     //input a custom matrix

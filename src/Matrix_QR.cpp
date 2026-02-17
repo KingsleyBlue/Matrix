@@ -11,7 +11,7 @@ std::pair<Matrix, Matrix> mat::QRdecomp(const Matrix& A)
         int rows=A.getrow();
         int cols=A.getcol();
         Matrix R=A;
-        Matrix Q(rows);
+        Identity Q(rows);
         for(int i=0;i<std::min(rows,cols);i++)
         {
             Matrix H=mat::HT(R,i);

@@ -8,7 +8,7 @@ Matrix mat::reverse(const Matrix& A)
     throw std::invalid_argument("not a square!");
     else
     {
-        Matrix I(rows);
+        Identity I(rows);
         std::vector<Matrix>result;
         result=mat::solution(A,I);
         Matrix A_re(rows,cols);

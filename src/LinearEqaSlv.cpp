@@ -37,7 +37,6 @@ std::vector<Matrix> mat::solution(const Matrix& A,const Matrix& B)
                 result[g](U.getrow()-1,0)=temp_y[rows-1];
                 if(i<U.getrow()-1)
                 {
-                    //result[g].set(i,0,temp_y[i]);
                     result[g](i,0)=temp_y[i];
                     for(int j=U.getcol()-1;j>i;j--)
                     {

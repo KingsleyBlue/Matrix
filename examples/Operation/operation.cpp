@@ -4,7 +4,7 @@ using namespace mat;
 int main()
 {
     Matrix A(3,3);
-    Matrix B(3);
+    Identity B(3);
 
     //add
     std::cout<<A+B<<std::endl<<std::endl;

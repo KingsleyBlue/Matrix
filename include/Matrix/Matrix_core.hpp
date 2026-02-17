@@ -40,14 +40,6 @@ namespace mat
     Matrix():rows(0),cols(0){}
     Matrix(int r,int c):rows(r), cols(c), matrix(r, std::vector<long double>(c, 0)){}
 
-    Matrix(int size):rows(size), cols(size), matrix(size, std::vector<long double>(size, 0))
-    {
-        for(int i=0;i<rows;i++)
-        {
-            matrix[i][i]=1;
-        }
-    }
-
     Matrix(const Matrix& m):rows(m.rows),cols(m.cols),matrix(m.matrix){}//拷贝构造函数
     Matrix(Matrix&& m):rows(m.rows),cols(m.cols),matrix(std::move(m.matrix))//移动构造函数
     {
@@ -69,7 +61,6 @@ namespace mat
             Matrix b(1,cols);
             for(int j=0;j<cols;j++)
             {
-                //b.set(0,j,matrix[row][j]);
                 b(0,j)=matrix[row][j];
             }
             return b;
@@ -84,7 +75,6 @@ namespace mat
             Matrix b(rows,1);
             for(int i=0;i<rows;i++)
             {
-                //b.set(i,0,matrix[i][col]);
                 b(i,0)=matrix[i][col];
             }
             return b;
@@ -195,6 +185,37 @@ namespace mat
     using Matrix::getcol;
     using Matrix::getrow;
     using Matrix::getmat;
+ };
+
+ class Identity : public Matrix
+ {
+    public:
+    Identity():Matrix(2,2)
+    {
+        for(int i=0;i<getcol();i++)
+        {
+            (*this)(i,i)=1;
+        }
+    }
+    Identity(int r):Matrix(r,r)
+    {
+        if(r<=0)
+        {
+            throw std::invalid_argument("'r' should be above zero!");
+        }
+        else
+        {
+            for(int i=0;i<getrow();i++)
+            {
+                (*this)(i,i)=1;
+            }
+        }
+    }
+    Identity(const Matrix& m):Matrix(m)
+    {
+        if(m.getcol()!=m.getrow())
+            throw std::invalid_argument("not a square");
+    }
  };
 
 //重载运算符

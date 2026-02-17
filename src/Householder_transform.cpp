@@ -5,8 +5,8 @@ Matrix mat::HT(const Matrix& A,const int& index)
     int rows=A.getrow();
     int cols=A.getcol();
     long double modulus=0;
-    Matrix H(rows);
-    Matrix temp_H(rows-index);
+    Identity H(rows);
+    Identity temp_H(rows-index);
     Vector x(rows-index);
     for(int i=index;i<rows;i++)
     {
