@@ -12,7 +12,7 @@ std::pair<Matrix, Matrix> mat::LUdecomp(const Matrix& A)
         {
             for(int i=0;i<rows;i++)
             {
-                if(abs(A(i,i))<1e-5)
+                if(std::abs(A(i,i))<1e-5)
                 {
                     throw std::string("pivot is near zero!");
                 }

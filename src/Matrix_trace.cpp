@@ -1,4 +1,4 @@
-#include<Matrix\Matrix_core.hpp>
+#include<Matrix/Matrix_core.hpp>
 
 long double mat::tr(const Matrix& A)
 {
