@@ -20,7 +20,7 @@ namespace mat
     long double dot(const Vector&,const Vector&);
     Matrix orthx(Matrix);
     Matrix reverse(const Matrix&);
-    Matrix HT(const Matrix&,const int&);
+    Matrix HT(const Matrix&,const int&,std::string method="col");
     long double tr(const Matrix&);
 }
 
@@ -145,23 +145,30 @@ namespace mat
  class Vector:public Matrix
  {
     public:
+    enum class type{row,col};
     //构造函数
     Vector():Matrix(){};
-    Vector(int r):Matrix(r,1){}
+    Vector(int r,type t=type::col):Matrix(t==type::col?r:1,t==type::col?1:r){}
     Vector(const Vector&)=default;
     Vector(Vector&&)=default;
 
     //子类运算符重载
     long double& operator[](int r)
     {
+        if(getrow()==1)
+            return (*this)(0,r);
         return (*this)(r,0);
     }
     long double operator[](int r) const
     {
+        if(getrow()==1)
+            return (*this)(0,r);
         return (*this)(r,0);
     }
     int size() const
     {
+        if(getrow()==1)
+            return getcol();
         return getrow();
     }
     
