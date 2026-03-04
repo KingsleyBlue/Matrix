@@ -1,4 +1,5 @@
 #include<vector>
+#include <utility>
 #include<algorithm>
 #include<Matrix/Matrix_core.hpp>
 Matrix mat::GaussianElimination(Matrix A)
@@ -11,10 +12,11 @@ Matrix mat::GaussianElimination(Matrix A)
         for(i=h;i<A.rows;i++)
         {
             ifzero=true;
-            if(A.matrix[i][h]!=0)
+            if(std::abs(A(i,h)) > 1e-10)
             {
                 ifzero=false;
-                swap(A.matrix[h],A.matrix[i]);
+                for(int p=0;p<A.cols;p++)
+                    std::swap(A(h,p),A(i,p));
                 break;
             }
         }
@@ -24,7 +26,7 @@ Matrix mat::GaussianElimination(Matrix A)
         {
             for(k=A.cols-1;k>=h;k--)
             {
-                A.matrix[j][k]-=A.matrix[h][k]*A.matrix[j][h]/A.matrix[h][h];
+                A(j,k)-=A(h,k)*A(j,h)/A(h,h);
             }
         }
     }

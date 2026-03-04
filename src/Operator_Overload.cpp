@@ -7,7 +7,7 @@ std::istream &operator>>(std::istream &is, Matrix &m)
         {
             for(int j=0;j<m.getcol();j++)
             {
-                std::cin>>m.matrix[i][j];
+                is>>m(i,j);//
             }
         }
     return is;

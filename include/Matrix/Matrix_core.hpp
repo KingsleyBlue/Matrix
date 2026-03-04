@@ -33,12 +33,13 @@ namespace mat
 
     private:
     int rows,cols;
-    std::vector<std::vector<long double>>matrix;
+    std::vector<long double>matrix;
+    //std::vector<std::vector<long double>>matrix;
     
     public:
     //构造函数
     Matrix():rows(0),cols(0){}
-    Matrix(int r,int c):rows(r), cols(c), matrix(r, std::vector<long double>(c, 0)){}
+    Matrix(int r,int c):rows(r), cols(c), matrix(r*c,0){}//matrix()
 
     Matrix(const Matrix& m):rows(m.rows),cols(m.cols),matrix(m.matrix){}//拷贝构造函数
     Matrix(Matrix&& m):rows(m.rows),cols(m.cols),matrix(std::move(m.matrix))//移动构造函数
@@ -51,7 +52,7 @@ namespace mat
     int getrow() const{return rows;}//返回行数
     int getcol() const{return cols;}//返回列数
    
-    std::vector<std::vector<long double>> getmat() const{return matrix;}
+    std::vector<long double> getmat() const{return matrix;}
     Matrix getrow(int row) const//返回某行
     {
         if(row>=rows)
@@ -61,7 +62,7 @@ namespace mat
             Matrix b(1,cols);
             for(int j=0;j<cols;j++)
             {
-                b(0,j)=matrix[row][j];
+                b(0,j)=matrix[row*cols+j];//
             }
             return b;
         }
@@ -75,7 +76,7 @@ namespace mat
             Matrix b(rows,1);
             for(int i=0;i<rows;i++)
             {
-                b(i,0)=matrix[i][col];
+                b(i,0)=matrix[i*rows+col];//
             }
             return b;
         }
@@ -129,7 +130,7 @@ namespace mat
         if(r>=rows||c>=cols)
             throw std::invalid_argument("out of range!");
         else
-            return matrix[r][c];
+            return matrix[r*cols+c];//
     }
 
     const long double& operator()(int r, int c) const   //读
@@ -137,7 +138,7 @@ namespace mat
         if(r>=rows||c>=cols)
             throw std::invalid_argument("out of range!");
         else
-            return matrix[r][c];
+            return matrix[r*cols+c];//
     }
 
  };

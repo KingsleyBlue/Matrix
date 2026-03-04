@@ -1,4 +1,5 @@
 #include<vector>
+#include <utility>
 #include<Matrix/Matrix_core.hpp>
 
 double mat::det(const Matrix& m)
@@ -11,15 +12,16 @@ double mat::det(const Matrix& m)
             long double nonzero=-1,result=1;
             bool ifcolzero;
             int h,i,j,k;
-            std::vector<std::vector<long double>>matrix(m.getmat());
+            std::vector<long double>matrix(m.getmat());
             for(h=0;h<col;h++)//搜索非零元素
             {
                 for(i=h;i<row;i++)
                 {
                     ifcolzero=true;
-                    if((matrix[i][h]!=0)&&(i!=nonzero))
+                    if((matrix[i*col+h]!=0)&&(i!=nonzero))
                     {
-                        swap(matrix[h],matrix[i]);
+                        for(int p=0;p<col;p++)
+                            std::swap(matrix[h*col+p],matrix[i*col+p]);
                         ifcolzero=false;
                         break;
                     }
@@ -29,11 +31,11 @@ double mat::det(const Matrix& m)
                 {
                     for(k=col-1;k>=h;k--)
                     {
-                        matrix[j][k]-=matrix[h][k]*matrix[j][h]/matrix[h][h];
+                        matrix[j*col+k]-=matrix[h*col+k]*matrix[j*col+h]/matrix[h*col+h];
 
                     }
                 }
-                result*=matrix[h][h];
+                result*=matrix[h*col+h];
             }
              return result;
         }
