@@ -4,7 +4,7 @@ using namespace mat;
 int main()
 {
     Matrix A(3,3);
-    long double value=1;
+    double value=1;
     for(int i=0;i<3;i++)
     {
         for(int j=0;j<3;j++)
@@ -26,6 +26,12 @@ int main()
     std::cout<<"Q is:"<<std::endl<<std::get<0>(qr)<<std::endl;
     std::cout<<"R is:"<<std::endl<<std::get<1>(qr)<<std::endl;
 
+    //SVD Decompose
+    std::vector<Matrix>svd=mat::SVD(A);
+    std::cout<<"U is"<<std::endl<<svd[0]<<std::endl;
+    std::cout<<"Sigma is"<<std::endl<<svd[1]<<std::endl;
+    std::cout<<"V is"<<std::endl<<svd[2]<<std::endl;
+    std::cout<<"sum is"<<std::endl<<svd[0]*svd[1]*svd[2]<<std::endl;
     system("pause");
     return 0;
 }

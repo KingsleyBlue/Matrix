@@ -10,7 +10,7 @@ namespace mat
 {
     Matrix trans(const Matrix&);//求转置矩阵
     Matrix GaussianElimination(Matrix);//高斯消元法
-    double det(const Matrix&);//求行列式
+    long double det(const Matrix&);//求行列式
     std::pair<Matrix, Matrix> LUdecomp(const Matrix&);//LU分解
     int rank(Matrix);//求秩
     Matrix col_aug(const Matrix&,const Matrix&);//列增广矩阵
@@ -20,8 +20,17 @@ namespace mat
     long double dot(const Vector&,const Vector&);
     Matrix orthx(Matrix);
     Matrix reverse(const Matrix&);
-    Matrix HT(const Matrix&,const int&,std::string method="col");
+    Matrix HT(const Matrix&,const int&,const int&,std::string method="col");
     long double tr(const Matrix&);
+    std::vector<Matrix> SVD(const Matrix&);
+    namespace Givens
+    {
+        void givens(long double,long double,long double&,long double&);
+        void right_givens(Matrix& ,int ,long double ,long double );
+        void left_givens(Matrix& ,int ,long double ,long double );
+        void update_V(Matrix& ,int ,long double ,long double );
+        void update_U(Matrix& ,int ,long double ,long double );
+    }
 }
 
 //定义矩阵
@@ -52,7 +61,7 @@ namespace mat
     int getrow() const{return rows;}//返回行数
     int getcol() const{return cols;}//返回列数
    
-    std::vector<long double> getmat() const{return matrix;}
+    const std::vector<long double>& getmat() const{return matrix;}
     Matrix getrow(int row) const//返回某行
     {
         if(row>=rows)
@@ -76,7 +85,7 @@ namespace mat
             Matrix b(rows,1);
             for(int i=0;i<rows;i++)
             {
-                b(i,0)=matrix[i*rows+col];//
+                b(i,0)=matrix[i*cols+col];//
             }
             return b;
         }
@@ -128,7 +137,7 @@ namespace mat
     long double& operator()(int r, int c)//写
     {
         if(r>=rows||c>=cols)
-            throw std::invalid_argument("out of range!");
+            throw std::invalid_argument("write:out of range!");
         else
             return matrix[r*cols+c];//
     }
@@ -136,9 +145,9 @@ namespace mat
     const long double& operator()(int r, int c) const   //读
     {
         if(r>=rows||c>=cols)
-            throw std::invalid_argument("out of range!");
+            throw std::invalid_argument("read:out of range!");
         else
-            return matrix[r*cols+c];//
+            return matrix[r*cols+c];
     }
 
  };
@@ -207,7 +216,7 @@ namespace mat
     }
     Identity(int r):Matrix(r,r)
     {
-        if(r<=0)
+        if(r<0)
         {
             throw std::invalid_argument("'r' should be above zero!");
         }

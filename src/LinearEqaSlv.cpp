@@ -13,7 +13,7 @@ std::vector<Matrix> mat::solution(const Matrix& A,const Matrix& B)
         auto lu=mat::LUdecomp(A);
         Matrix L=std::get<0>(lu);
         Matrix U=std::get<1>(lu);
-        double sum;
+        long double sum;
         for(int g=0;g<cols;g++)
         {
             result.push_back(Matrix(rows,1));

@@ -2,7 +2,7 @@
 #include <utility>
 #include<Matrix/Matrix_core.hpp>
 
-double mat::det(const Matrix& m)
+long double mat::det(const Matrix& m)
     {
         int row=m.getrow(),col=m.getcol();
         if(row!=col)
