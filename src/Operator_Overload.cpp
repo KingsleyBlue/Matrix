@@ -113,6 +113,13 @@ Matrix operator/(const Matrix& A,const long double& b)//矩阵数除
         }
     }
 
+long double operator/(const Matrix& A,const Matrix& B)
+{
+    if(A.getcol()==1&&A.getrow()==1&&B.getcol()==1&&B.getrow()==1)
+        return A(0,0)/B(0,0);
+    else
+        throw std::invalid_argument("/():invalid operation");
+}
 
 Matrix operator*(const Matrix& A,const Matrix& B)//矩阵乘法
     {
